@@ -19,7 +19,7 @@ public class Controller {
             i -= 1;
             userLottos.add(new Lotto(service.makeLottoNums(6, 1, 45)));
         }
-        System.out.println(userLottos);
+        front.printLottoBought(userLottos);
     }
 
     public Integer inputToQuantity(String input){
