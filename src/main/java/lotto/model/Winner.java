@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.controller.Controller;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -11,18 +13,18 @@ public class Winner {
 
     public Winner(List<Integer> numbers, Integer bonus) {
         validate(numbers, bonus);
-        Collections.sort(numbers);
+//        Collections.sort(numbers);
         this.numbers = numbers;
         this.bonus = bonus;
     }
 
     private void validate(List<Integer> numbers, Integer bonus) {
         if(new HashSet<>(numbers).size() != 6){
-            throw new IllegalArgumentException("[ERROR]: Invalid Input: 중복되지 않는 6개의 숫자를 입력입니다.");
+            throw new IllegalArgumentException(Controller.ERROR_MESSAGE + " Invalid Input: 중복되지 않는 6개의 숫자를 입력입니다.");
         }
 
         if(new HashSet<>(numbers).contains(bonus)){
-            throw new IllegalArgumentException("[ERROR]: Invalid Input: 보너스 번호가 당첨번호와 중복될 수 없습니다.");
+            throw new IllegalArgumentException(Controller.ERROR_MESSAGE + " Invalid Input: 보너스 번호가 당첨번호와 중복될 수 없습니다.");
         }
 
     }

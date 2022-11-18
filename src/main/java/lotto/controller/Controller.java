@@ -13,31 +13,34 @@ import java.util.stream.Collectors;
 
 public class Controller {
 
+    int bought;
     Front front = new Front();
     LottoService service = new LottoService();
     List<Lotto> userLottos;
     Winner winner;
+    public static final String ERROR_MESSAGE = "[ERROR]";
 
     public void run(){
         int i = moneyToQuantity(front.buyLotto());
         userLottos = new ArrayList(i);
         while(i > 0){
             i -= 1;
-            userLottos.add(new Lotto(service.makeLottoNums(6, 1, 45)));
+            userLottos.add(new Lotto(service.makeLottoNums()));
         }
         front.printLottoBought(userLottos);
         winner = getWinner(front.enrollWinNum());
-        service.checkWinnerStatus(userLottos, winner);
+        front.printWinnerStatus(service.checkWinnerStatus(userLottos, winner), this.bought);
     }
 
     public Integer moneyToQuantity(String input){
         try{
             if(Integer.parseInt(input) / 1000 > 0){
+                this.bought = Integer.parseInt(input);
                 return Integer.parseInt(input) / 1000;
             }
-            throw new IllegalArgumentException("1000원 단위(1000원 이상)의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 1000원 단위(1000원 이상)의 숫자를 입력해주세요.");
         }catch (Exception e){
-            throw new IllegalArgumentException("1000원 단위의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 1000원 단위의 숫자를 입력해주세요.");
         }
     }
 
@@ -49,7 +52,7 @@ public class Controller {
                     .collect(Collectors.toList())
                     , Integer.parseInt(enrollWinNum.get(1)));
         }catch (Exception e){
-            throw new IllegalArgumentException("[ERROR]: Invalid Input: 6개의 숫자와 1개의 보너스 숫자를 입력하세요.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + " Invalid Input: 6개의 숫자와 1개의 보너스 숫자를 입력하세요.");
         }
     }
 }

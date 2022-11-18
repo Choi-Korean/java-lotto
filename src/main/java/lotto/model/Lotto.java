@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.controller.Controller;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -10,13 +12,13 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
+//        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if(new HashSet<>(numbers).size() != 6){
-            throw new IllegalArgumentException("[ERROR]: Invalid Input: 중복되지 않는 6개의 숫자를 입력입니다.");
+            throw new IllegalArgumentException(Controller.ERROR_MESSAGE + " Invalid Input: 중복되지 않는 6개의 숫자를 입력입니다.");
         }
     }
 
