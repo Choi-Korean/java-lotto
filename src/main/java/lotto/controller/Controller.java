@@ -2,7 +2,6 @@ package lotto.controller;
 
 import lotto.model.Lotto;
 import lotto.model.Winner;
-import lotto.model.WinnerStatus;
 import lotto.service.LottoService;
 import lotto.view.Front;
 

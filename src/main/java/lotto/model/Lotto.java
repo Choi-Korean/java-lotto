@@ -2,8 +2,6 @@ package lotto.model;
 
 import lotto.controller.Controller;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
