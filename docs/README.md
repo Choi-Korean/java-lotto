@@ -17,8 +17,7 @@
 
 ### 변수
 - Controller
-  - [ ] 구매, 당첨/Enum
-  - [ ] 로또당첨변수/Enum
+  - [x] 로또당첨변수/Enum
 
 ### 유닛테스트
 - [x] Input Test

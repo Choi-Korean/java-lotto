@@ -3,6 +3,7 @@ package lotto;
 import lotto.controller.Controller;
 import lotto.model.Lotto;
 import lotto.model.Winner;
+import lotto.model.WinnerStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -62,6 +63,15 @@ class LottoTest {
     void createWinnerByString2() {
         assertThatThrownBy(() -> new Controller().getWinner(new ArrayList<>(Arrays.asList("1,2,3,7,4,5", "b"))))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("enum class WinnerStatus 생성 테스트")
+    @Test
+    void createWinnerStatus() {
+        WinnerStatus ws = WinnerStatus._3rd;
+        ws.setAmount(2);
+        System.out.println(ws.getTotal());
+        assertThat(ws.getPrice()).isEqualTo(1500000);
     }
 
 }
