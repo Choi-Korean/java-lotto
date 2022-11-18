@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -10,7 +11,7 @@ public class Winner {
 
     public Winner(List<Integer> numbers, Integer bonus) {
         validate(numbers, bonus);
-        numbers.sort(Comparator.naturalOrder());
+        Collections.sort(numbers);
         this.numbers = numbers;
         this.bonus = bonus;
     }

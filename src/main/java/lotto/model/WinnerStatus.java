@@ -1,9 +1,5 @@
 package lotto.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public enum WinnerStatus {
     _5th("3개", 5000, 0),
     _4th("4개", 50000, 0),
@@ -30,6 +26,9 @@ public enum WinnerStatus {
         return price;
     }
 
+    public int getAmount() {
+        return this.amount;
+    }
     public void setAmount(int amount) {
         this.amount = amount;
     }

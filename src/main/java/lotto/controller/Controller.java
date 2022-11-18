@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.model.Lotto;
 import lotto.model.Winner;
+import lotto.model.WinnerStatus;
 import lotto.service.LottoService;
 import lotto.view.Front;
 
@@ -16,6 +17,7 @@ public class Controller {
     LottoService service = new LottoService();
     List<Lotto> userLottos;
     Winner winner;
+
     public void run(){
         int i = moneyToQuantity(front.buyLotto());
         userLottos = new ArrayList(i);
@@ -25,7 +27,7 @@ public class Controller {
         }
         front.printLottoBought(userLottos);
         winner = getWinner(front.enrollWinNum());
-        System.out.println(winner);
+        service.checkWinnerStatus(userLottos, winner);
     }
 
     public Integer moneyToQuantity(String input){

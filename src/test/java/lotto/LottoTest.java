@@ -4,6 +4,7 @@ import lotto.controller.Controller;
 import lotto.model.Lotto;
 import lotto.model.Winner;
 import lotto.model.WinnerStatus;
+import lotto.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -70,8 +71,16 @@ class LottoTest {
     void createWinnerStatus() {
         WinnerStatus ws = WinnerStatus._3rd;
         ws.setAmount(2);
-        System.out.println(ws.getTotal());
         assertThat(ws.getPrice()).isEqualTo(1500000);
+    }
+
+    @DisplayName("당첨현황체크 메서드 기능 테스트")
+    @Test
+    void doCheckWinnerStatus() {
+        LottoService ls = new LottoService();
+        List<Lotto> lottos = new ArrayList<>(Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6))));
+        Winner winner = new Winner(Arrays.asList(1, 2, 3, 4, 5, 6), 7);
+        assertThat(ls.checkWinnerStatus(lottos, winner).get("6").getAmount()).isEqualTo(1);
     }
 
 }
